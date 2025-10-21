@@ -780,7 +780,7 @@ void LanguageServerCluster::StopAll(const std::unordered_set<wxString>& language
         for (const std::unordered_map<wxString, LanguageServerProtocol::Ptr_t>::value_type& vt : m_servers) {
             // stop all current processes
             LanguageServerProtocol::Ptr_t server = vt.second;
-            server.reset(nullptr);
+            server.reset();
         }
         m_servers.clear();
     } else {

@@ -17,13 +17,12 @@
 #include "wxStringHash.h"
 
 #include <functional>
-#include <map>
+#include <memory>
 #include <queue>
 #include <string>
 #include <unordered_map>
 #include <wx/arrstr.h>
 #include <wx/filename.h>
-#include <wx/sharedptr.h>
 
 typedef std::function<void()> LSPOnConnectedCallback_t;
 
@@ -87,7 +86,7 @@ class WXDLLIMPEXP_SDK LanguageServerProtocol : public wxEvtHandler
     bool m_incrementalChangeSupported = false;
 
 public:
-    typedef wxSharedPtr<LanguageServerProtocol> Ptr_t;
+    using Ptr_t = std::shared_ptr<LanguageServerProtocol>;
     static FileExtManager::FileType workspace_file_type;
 
 protected:

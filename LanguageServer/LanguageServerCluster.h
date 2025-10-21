@@ -11,10 +11,10 @@
 #include "database/entry.h"
 #include "wxStringHash.h"
 
+#include <memory>
 #include <unordered_set>
 #include <vector>
 #include <wx/event.h>
-#include <wx/sharedptr.h>
 
 class LSPOutlineViewDlg;
 class LanguageServerPlugin;
@@ -33,7 +33,7 @@ class LanguageServerCluster : public wxEvtHandler
     std::unique_ptr<CodeLiteRemoteHelper> m_remoteHelper;
 
 public:
-    typedef wxSharedPtr<LanguageServerCluster> Ptr_t;
+    using Ptr_t = std::shared_ptr<LanguageServerCluster>;
 
 public:
     void StartServer(const LanguageServerEntry& entry);
